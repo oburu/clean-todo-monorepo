@@ -1,0 +1,168 @@
+swagger: '2.0'
+info:
+  description: 'This is a sample Todo API server, following Clean Architecture principles'
+  version: '1.0.0'
+  title: 'Todo App - Clean Architecture'
+basePath: '/api/v1'
+tags:
+  - name: 'Todo'
+    description: 'Operations about todos'
+schemes:
+  - 'http'
+paths:
+  /todo:
+    get:
+      tags:
+        - 'Todo'
+      summary: 'Get all todos'
+      description: ''
+      operationId: 'getAll'
+      produces:
+        - 'application/json'
+      responses:
+        '200':
+          description: 'successful operation'
+          schema:
+            $ref: '#/definitions/Todos'
+    post:
+      tags:
+        - 'Todo'
+      summary: 'Add a new todo'
+      description: ''
+      operationId: 'addTodo'
+      consumes:
+        - 'application/json'
+      produces:
+        - 'application/json'
+      parameters:
+        - in: 'body'
+          name: 'body'
+          description: 'Todo object'
+          required: true
+          schema:
+            $ref: '#/definitions/TodoDescription'
+      responses:
+        '200':
+          description: 'successful operation'
+          schema:
+            $ref: '#/definitions/TodoResponse'
+    patch:
+      tags:
+        - 'Todo'
+      summary: 'update a todo'
+      description: 'It needs all the original todo data (specifically the id) and the modified done or description new data'
+      operationId: 'updateTodo'
+      consumes:
+        - 'application/json'
+      produces:
+        - 'application/json'
+      parameters:
+        - in: 'body'
+          name: 'body'
+          schema:
+            $ref: '#/definitions/Todo'
+      responses:
+        '200':
+          description: 'successful operation'
+          schema:
+            $ref: '#/definitions/TodoResponse'
+    delete:
+      tags:
+        - 'Todo'
+      summary: 'delete a todo'
+      description: ''
+      operationId: 'deleteTodo'
+      consumes:
+        - 'application/json'
+      produces:
+        - 'application/json'
+      parameters:
+        - in: 'body'
+          name: 'body'
+          schema:
+            $ref: '#/definitions/TodoId'
+      responses:
+        '200':
+          description: 'successful operation'
+          schema:
+            $ref: '#/definitions/TodoDeleteResponse'
+definitions:
+  Todo:
+    type: 'object'
+    properties:
+      id:
+        type: 'string'
+      done:
+        type: 'boolean'
+      createdOn:
+        type: 'number'
+      modifiedOn:
+        type: 'number'
+      description:
+        type: 'string'
+  TodoDescription:
+    type: 'object'
+    properties:
+      description:
+        type: 'string'
+  TodoId:
+    type: 'object'
+    properties:
+      id:
+        type: 'string'
+  Todos:
+    type: 'object'
+    properties:
+      status:
+        type: 'boolean'
+      error:
+        type: 'string'
+      content:
+        type: 'array'
+        items: 
+          $ref: '#/definitions/Todo'
+  TodoResponse:
+    type: 'object'
+    properties:
+      status:
+        type: 'boolean'
+      error:
+        type: 'string'
+      content:
+         $ref: '#/definitions/Todo'
+  TodoDeleteResponse:
+    type: 'object'
+    properties:
+      status:
+        type: 'boolean'
+      error:
+        type: 'string'
+      content:
+        type: 'object'
+        properties:
+          status: 
+            type: 'string'
+  BadData:
+    type: 'object'
+    properties:
+      status:
+        type: 'boolean'
+      error:
+        type: 'object'
+        properties:
+          status:
+            type: 'number'
+          message:
+            type: 'string'
+          reason:
+            type: 'string'
+          url:
+            type: 'string'
+          ip:
+            type: 'string'
+          validationErrors:
+            type: 'array'
+            items:
+              type: 'object'
+      content:
+        type: 'string'

@@ -1,0 +1,15 @@
+{
+  "name": "@clean-todo/monorepo",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "api": "yarn workspace @clean-todo/api",
+    "react": "yarn workspace @clean-todo/react",
+    "db": "yarn workspace @clean-todo/db",
+    "business": "yarn workspace @clean-todo/business"
+  }
+}
