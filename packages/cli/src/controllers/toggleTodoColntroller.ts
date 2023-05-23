@@ -1,7 +1,7 @@
 import inquirer from 'inquirer';
 import chalk from 'chalk';
 import { createSpinner } from 'nanospinner';
-import { ICrudTodoApiBoundary } from '../../../../domain/boundaries/ICrudTodoApiBoundary';
+import { ICrudTodoApiBoundary } from '@clean-todo/business';
 import { shortId, sleep } from '../utils/shared';
 
 export async function toggleTodoController({

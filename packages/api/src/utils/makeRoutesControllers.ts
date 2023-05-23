@@ -4,7 +4,7 @@ import { inMemoryCrudApi, inSystemCrudApi, inMongo } from '@clean-todo/db';
 
 // Connect selected Api with domain logic and get usecases
 const { createTodo, getAllTodos, updateTodo, deleteTodo, updateAllTodos } =
-  makeTodoCrudApi(inMongo);
+  makeTodoCrudApi(inSystemCrudApi);
 
 export function addTodoRouteController(req: Request) {
   const todo = makeTodo(makeId).please({ description: req.body.description });

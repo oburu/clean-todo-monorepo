@@ -1,7 +1,5 @@
-import { makeTodoCrudApi } from '../../../domain/utils/makeTodoCrudApi';
-import { inMemoryCrudApi } from '../../db/inMemory';
-import { inSystemCrudApi } from '../../db/inSystem';
-import { inMongo } from '../../db/inMongo';
+import { makeTodoCrudApi } from '@clean-todo/business';
+import { inMemoryCrudApi, inSystemCrudApi, inMongo } from '@clean-todo/db';
 import { ValueOf, choices } from './constants';
 import { goodBye } from './utils/views';
 import {
@@ -13,7 +11,7 @@ import {
 } from './controllers';
 
 const { createTodo, getAllTodos, updateTodo, deleteTodo, deleteAllTodos } =
-  makeTodoCrudApi(inMongo);
+  makeTodoCrudApi(inSystemCrudApi);
 
 export async function handleSelectedChoice(choice: ValueOf<typeof choices>) {
   const choiceList = {

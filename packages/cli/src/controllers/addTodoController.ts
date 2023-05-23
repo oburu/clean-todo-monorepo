@@ -1,9 +1,7 @@
 import inquirer from 'inquirer';
 import chalk from 'chalk';
 import { createSpinner } from 'nanospinner';
-import { ICrudTodoApiBoundary } from '../../../../domain/boundaries/ICrudTodoApiBoundary';
-import { makeTodo } from '../../../../domain/entities/Todo';
-import { makeId } from '../../../../domain/utils/makeId';
+import { ICrudTodoApiBoundary, makeTodo, makeId } from '@clean-todo/business';
 import { sleep } from '../utils/shared';
 
 export async function addTodoController(createTodo: ICrudTodoApiBoundary['createTodo']) {

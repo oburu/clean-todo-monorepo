@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { ICrudTodoApiBoundary } from '../../../../domain/boundaries/ICrudTodoApiBoundary';
+import { ICrudTodoApiBoundary } from '@clean-todo/business';
 import { formatTable } from '../utils/formatTableRow';
 
 export async function listTodosController(getAllTodos: ICrudTodoApiBoundary['getAllTodos']) {

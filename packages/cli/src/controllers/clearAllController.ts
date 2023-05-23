@@ -1,8 +1,8 @@
 import inquirer from 'inquirer';
 import chalk from 'chalk';
 import { createSpinner } from 'nanospinner';
+import { ICrudTodoApiBoundary } from '@clean-todo/business';
 import { sleep } from '../utils/shared';
-import { ICrudTodoApiBoundary } from '../../../../domain/boundaries/ICrudTodoApiBoundary';
 
 export async function clearAllController(deleteAllTodos: ICrudTodoApiBoundary['deleteAllTodos']) {
   console.clear();

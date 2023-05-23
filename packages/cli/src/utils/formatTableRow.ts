@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { Todo } from '../../../../domain/entities/Todo';
+import type { Todo } from '@clean-todo/business';
 import { shortId } from './shared';
 
 export function formatTable(list: Todo[]) {
