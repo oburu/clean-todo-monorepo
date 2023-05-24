@@ -2,6 +2,7 @@ import inquirer from 'inquirer';
 import chalk from 'chalk';
 import { createSpinner } from 'nanospinner';
 import { ICrudTodoApiBoundary } from '@clean-todo/business';
+import type { Todo } from '@clean-todo/business';
 import { shortId, sleep } from '../utils/shared';
 
 export async function toggleTodoController({
@@ -30,10 +31,15 @@ export async function toggleTodoController({
     spinner.stop;
     return;
   }
-  const toggledTodo = { ...todo, done: !todo.done };
 
-  await updateTodo(toggledTodo);
+  // have to do this is because mongooseModel.findOne returns the model itself,
+  let parsedTodo = todo;
+  if ('_doc' in todo) {
+    parsedTodo = todo._doc as Todo;
+  }
 
-  spinner.success({ text: `Todo ${chalk.blue(toggledTodo.description)} toggled!` });
+  await updateTodo({ ...parsedTodo, done: !todo.done });
+
+  spinner.success({ text: `Todo ${chalk.blue(parsedTodo.description)} toggled!` });
   spinner.stop;
 }
