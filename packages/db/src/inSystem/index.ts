@@ -7,11 +7,11 @@ export function inSystemCrudApi(): ICrudTodoApiBoundary {
   return {
     async createTodo(todo: Todo) {
       const todos = fetchTodos();
-      const duplicatetodos = todos.filter(
+      const duplicateTodos = todos.filter(
         (storedTodo) => storedTodo.id === todo.id
       );
 
-      if (duplicatetodos.length === 0) {
+      if (duplicateTodos.length === 0) {
         todos.push(todo);
         saveTodos(todos);
         return todo;

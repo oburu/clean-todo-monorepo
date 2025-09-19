@@ -1,5 +1,4 @@
-import { makeTodoCrudApi } from "@clean-todo/bl";
-import { inMongo } from "@clean-todo/db";
+import { crudApi } from "@clean-todo/db";
 import { ValueOf, choices } from "./constants";
 import {
   addTodoController,
@@ -10,8 +9,10 @@ import {
 } from "./controllers";
 import { goodBye } from "./utils/views";
 
+// crudApi is an object that contains methods to interact with the selected database.
+
 const { createTodo, getAllTodos, updateTodo, deleteTodo, deleteAllTodos } =
-  makeTodoCrudApi(inMongo);
+  crudApi;
 
 export async function handleSelectedChoice(choice: ValueOf<typeof choices>) {
   const choiceList = {

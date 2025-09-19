@@ -38,10 +38,10 @@ export const TodoItem = forwardRef<
 
   function handleDeleteTodo() {
     deleteTodo(todo.id);
-    togleDialog();
+    toggleDialog();
   }
 
-  function togleDialog() {
+  function toggleDialog() {
     setShowDialog((prev) => !prev);
   }
 
@@ -72,7 +72,7 @@ export const TodoItem = forwardRef<
                 type="checkbox"
                 checked={todo.done}
                 onChange={handleDoneTodo}
-                className="bg-slate-300 border-0 text-sky-500  mr-2 h-5 w-5 rounded"
+                className="bg-slate-300 border-0 text-sky-500  mr-2 h-5 w-5 rounded cursor-pointer "
               />
 
               {todo.description}
@@ -81,7 +81,7 @@ export const TodoItem = forwardRef<
             {isDeleting && <Spinner />}
           </div>
           {!isReordering && (
-            <Button onClick={togleDialog} type="neutral">
+            <Button onClick={toggleDialog} type="neutral">
               <span className="text-xs flex items-center">❌</span>
             </Button>
           )}
@@ -98,7 +98,7 @@ export const TodoItem = forwardRef<
               <span>🚀 {acceptMessage.current}</span>
             </Button>
           </div>
-          <Button onClick={togleDialog} type="neutral">
+          <Button onClick={toggleDialog} type="neutral">
             <span className="text-md flex items-center">Cancel</span>
           </Button>
         </div>

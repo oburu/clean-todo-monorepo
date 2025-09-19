@@ -1,10 +1,10 @@
-import { makeId, makeTodo, makeTodoCrudApi } from "@clean-todo/bl";
-import { inMongo } from "@clean-todo/db";
+import { makeId, makeTodo } from "@clean-todo/bl";
+import { crudApi } from "@clean-todo/db";
 import { Request } from "express";
 
-// Connect selected Api with domain logic and get usecases
+// crudApi is an object that contains methods to interact with the selected database.
 const { createTodo, getAllTodos, updateTodo, deleteTodo, updateAllTodos } =
-  makeTodoCrudApi(inMongo);
+  crudApi;
 
 export function addTodoRouteController(req: Request) {
   const todo = makeTodo(makeId).please({ description: req.body.description });
