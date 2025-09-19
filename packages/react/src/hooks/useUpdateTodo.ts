@@ -1,12 +1,12 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { BE_URL, Todo } from '../constants';
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { BE_URL, Todo } from "../constants";
 
 async function updateTodoFn(data: Todo) {
   try {
     const response = await fetch(BE_URL, {
-      method: 'PATCH',
+      method: "PATCH",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
@@ -31,7 +31,7 @@ export function useUpdateTodo() {
     mutate: updateTodo,
   } = useMutation({
     mutationFn: updateTodoFn,
-    onSuccess: () => queryClient.invalidateQueries(['todos']),
+    onSuccess: () => queryClient.invalidateQueries(["todos"]),
   });
 
   return {

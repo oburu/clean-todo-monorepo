@@ -1,24 +1,24 @@
-import { Router } from 'express';
-import { makeExpressCallBack } from './utils/makeExpressCallBack';
+import { Router } from "express";
+import { makeExpressCallBack } from "./utils/makeExpressCallBack";
 import {
-  getAllRouteController,
   addTodoRouteController,
-  updateTodoController,
   deleteTodoRouteController,
+  getAllRouteController,
   updateAllTodosController,
-} from './utils/makeRoutesControllers';
+  updateTodoController,
+} from "./utils/makeRoutesControllers";
 
 export function routes() {
   const router = Router();
 
   router
-    .route('/todo')
+    .route("/todo")
     .get(makeExpressCallBack(getAllRouteController))
     .post(makeExpressCallBack(addTodoRouteController))
     .patch(makeExpressCallBack(updateTodoController))
     .delete(makeExpressCallBack(deleteTodoRouteController));
 
-  router.route('/todos').post(makeExpressCallBack(updateAllTodosController));
+  router.route("/todos").post(makeExpressCallBack(updateAllTodosController));
 
   return router;
 }

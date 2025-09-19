@@ -1,15 +1,15 @@
-import { Request } from 'express';
+import { Todo } from "@clean-todo/bl";
+import { Request } from "express";
 import {
   addTodoRouteController,
+  deleteTodoRouteController,
   getAllRouteController,
   updateTodoController,
-  deleteTodoRouteController,
-} from '../makeRoutesControllers';
-import { Todo } from '@clean-todo/bl';
+} from "../makeRoutesControllers";
 
 const mockReq = {
   body: {
-    description: 'hola, this is a todo test',
+    description: "hola, this is a todo test",
   },
 } as Request;
 
@@ -19,22 +19,22 @@ beforeEach(async () => {
   todo = await addTodoRouteController(mockReq);
 });
 
-describe('Testing makeRoutesControllers', () => {
-  it('should create a todo using todoRouteController', async () => {
+describe("Testing makeRoutesControllers", () => {
+  it("should create a todo using todoRouteController", async () => {
     expect(todo.description).toEqual(mockReq.body.description);
   });
 
-  it('should display all todos', async () => {
+  it("should display all todos", async () => {
     const list = await getAllRouteController();
 
     expect(list).toEqual(expect.arrayContaining([todo]));
   });
 
-  it('should update a todo', async () => {
+  it("should update a todo", async () => {
     const mockReq = {
       body: {
         ...todo,
-        description: 'this is diferent',
+        description: "this is diferent",
         done: true,
       },
     } as Request;
@@ -45,7 +45,7 @@ describe('Testing makeRoutesControllers', () => {
     expect(updatedTodo.done).toEqual(mockReq.body.done);
   });
 
-  it('should delete a todo', async () => {
+  it("should delete a todo", async () => {
     const mockReq = {
       body: {
         id: todo.id,
@@ -55,6 +55,8 @@ describe('Testing makeRoutesControllers', () => {
     await deleteTodoRouteController(mockReq);
     const listAfter = await getAllRouteController();
 
-    expect(listAfter.find((todo) => todo.id === mockReq.body.id)).toBe(undefined);
+    expect(listAfter.find((todo) => todo.id === mockReq.body.id)).toBe(
+      undefined
+    );
   });
 });

@@ -1,49 +1,34 @@
-import { useRef, useEffect } from 'react';
+import { useEffect, useRef } from "react";
 
 export function DayNightToggle() {
   const darkIconRef = useRef<SVGSVGElement | null>(null);
   const lightIconRef = useRef<SVGSVGElement | null>(null);
 
   const systemIsDark =
-    localStorage.getItem('color-theme') === 'dark' ||
-    (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    localStorage.getItem("color-theme") === "dark" ||
+    (!("color-theme" in localStorage) &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches);
 
   useEffect(() => {
     if (systemIsDark) {
-      document.documentElement.classList.add('dark');
-      lightIconRef.current?.classList.remove('hidden');
+      document.documentElement.classList.add("dark");
+      lightIconRef.current?.classList.remove("hidden");
     } else {
-      darkIconRef.current?.classList.remove('hidden');
+      darkIconRef.current?.classList.remove("hidden");
     }
   }, [systemIsDark]);
 
   function handleClick() {
     // toggle icons inside button
-    darkIconRef.current?.classList.toggle('hidden');
-    lightIconRef.current?.classList.toggle('hidden');
+    darkIconRef.current?.classList.toggle("hidden");
+    lightIconRef.current?.classList.toggle("hidden");
 
-    // if (!localStorage.getItem('color-theme')) {
-    //   if (document.documentElement.classList.contains('dark')) {
-    //     addLight();
-    //   } else {
-    //     addDark();
-    //   }
-    //   return;
-    // }
-
-    // if (localStorage.getItem('color-theme') === 'light') {
-    //   addDark();
-    // } else {
-    //   addLight();
-    // }
-
-       const isDark = document.documentElement.classList.contains('dark');
+    const isDark = document.documentElement.classList.contains("dark");
     if (isDark) {
       addLight();
     } else {
       addDark();
     }
-    
   }
 
   return (
@@ -80,11 +65,11 @@ export function DayNightToggle() {
 }
 
 function addDark() {
-  document.documentElement.classList.add('dark');
-  localStorage.setItem('color-theme', 'dark');
+  document.documentElement.classList.add("dark");
+  localStorage.setItem("color-theme", "dark");
 }
 
 function addLight() {
-  document.documentElement.classList.remove('dark');
-  localStorage.setItem('color-theme', 'light');
+  document.documentElement.classList.remove("dark");
+  localStorage.setItem("color-theme", "light");
 }

@@ -1,6 +1,6 @@
-import { Request } from 'express';
-import { makeTodo, makeId, makeTodoCrudApi } from '@clean-todo/bl';
-import { inMemoryCrudApi, inSystemCrudApi, inMongo } from '@clean-todo/db';
+import { makeId, makeTodo, makeTodoCrudApi } from "@clean-todo/bl";
+import { inMongo } from "@clean-todo/db";
+import { Request } from "express";
 
 // Connect selected Api with domain logic and get usecases
 const { createTodo, getAllTodos, updateTodo, deleteTodo, updateAllTodos } =
@@ -29,6 +29,6 @@ export async function deleteTodoRouteController(req: Request) {
 export async function updateAllTodosController(req: Request) {
   await updateAllTodos(req.body);
   return {
-    status: 'All todos updated',
+    status: "All todos updated",
   };
 }

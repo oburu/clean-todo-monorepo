@@ -1,7 +1,9 @@
-import { ICrudTodoApiBoundary } from '../boundaries/ICrudTodoApiBoundary';
-import { Todo } from '../entities/Todo';
+import { ICrudTodoApiBoundary } from "../boundaries/ICrudTodoApiBoundary";
+import { Todo } from "../entities/Todo";
 
-export function makeUpdateTodo({ updateTodo }: Pick<ICrudTodoApiBoundary, 'updateTodo'>) {
+export function makeUpdateTodo({
+  updateTodo,
+}: Pick<ICrudTodoApiBoundary, "updateTodo">) {
   return (todo: Todo) => {
     const updatedTodo = {
       ...todo,

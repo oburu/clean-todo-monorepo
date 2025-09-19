@@ -1,12 +1,12 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { BE_URL } from '../constants';
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { BE_URL } from "../constants";
 
 async function deleteTodoFn(id: string) {
   try {
     const response = await fetch(BE_URL, {
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ id }),
     });
@@ -31,7 +31,7 @@ export function useDeleteTodo() {
     mutate: deleteTodo,
   } = useMutation({
     mutationFn: deleteTodoFn,
-    onSuccess: () => queryClient.invalidateQueries(['todos']),
+    onSuccess: () => queryClient.invalidateQueries(["todos"]),
   });
 
   return {

@@ -1,5 +1,7 @@
-import { ICrudTodoApiBoundary } from '../boundaries/ICrudTodoApiBoundary';
+import { ICrudTodoApiBoundary } from "../boundaries/ICrudTodoApiBoundary";
 
-export function makeDeleteTodo({ deleteTodo }: Pick<ICrudTodoApiBoundary, 'deleteTodo'>) {
+export function makeDeleteTodo({
+  deleteTodo,
+}: Pick<ICrudTodoApiBoundary, "deleteTodo">) {
   return (id: string) => deleteTodo(id);
 }

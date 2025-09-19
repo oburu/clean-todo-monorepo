@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import path from 'path';
-import { ICrudTodoApiBoundary } from '@clean-todo/bl';
-import type { Todo } from '@clean-todo/bl';
+import type { Todo } from "@clean-todo/bl";
+import { ICrudTodoApiBoundary } from "@clean-todo/bl";
+import dotenv from "dotenv";
+import mongoose from "mongoose";
+import path from "path";
 
 function createSchema() {
   const TodoSchema = new mongoose.Schema({
@@ -13,18 +13,18 @@ function createSchema() {
     description: { type: String },
   });
 
-  return mongoose.model('todo', TodoSchema);
+  return mongoose.model("todo", TodoSchema);
 }
 
 function connectToMongoDB() {
-  dotenv.config({ path: path.resolve(__dirname, '../../.env.local') });
+  dotenv.config({ path: path.resolve(__dirname, "../../.env.local") });
   const { MONGODB_URI } = process.env;
 
   MONGODB_URI &&
     mongoose
       .connect(MONGODB_URI)
       .then(() => {
-        console.log('🥭[mongo]: DB connected');
+        console.log("🥭[mongo]: DB connected");
       })
       .catch((err) => {
         console.log(err);

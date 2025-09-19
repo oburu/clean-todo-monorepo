@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import { usePostTodo } from '../hooks/usePostTodo';
-import checkyChecky from '../assets/checkyChecky.svg';
-import { Button } from './Button';
-import { DayNightToggle } from './DayNightToggle';
+import { useEffect, useState } from "react";
+import checkyChecky from "../assets/checkyChecky.svg";
+import { usePostTodo } from "../hooks/usePostTodo";
+import { Button } from "./Button";
+import { DayNightToggle } from "./DayNightToggle";
 
 type HeaderType = {
   isReordering: boolean;
@@ -10,8 +10,9 @@ type HeaderType = {
 };
 
 export function Header({ isReordering, handleDone }: HeaderType) {
-  const [description, setDescription] = useState('');
-  const { isErrorCreating, isSuccessCreating, errorCreating, createTodo } = usePostTodo();
+  const [description, setDescription] = useState("");
+  const { isErrorCreating, isSuccessCreating, errorCreating, createTodo } =
+    usePostTodo();
 
   function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
     setDescription(e.target.value);
@@ -19,7 +20,7 @@ export function Header({ isReordering, handleDone }: HeaderType) {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (description === '') {
+    if (description === "") {
       return;
     }
 
@@ -28,7 +29,7 @@ export function Header({ isReordering, handleDone }: HeaderType) {
 
   useEffect(() => {
     if (isSuccessCreating) {
-      setDescription('');
+      setDescription("");
     }
   }, [isSuccessCreating]);
 
@@ -48,14 +49,20 @@ export function Header({ isReordering, handleDone }: HeaderType) {
           disabled={isReordering}
           type="text"
           onChange={handleOnChange}
-          value={isReordering ? '⛔' : description}
+          value={isReordering ? "⛔" : description}
           autoFocus
           className="border-4 border-slate-200 text-slate-600 text-sm p-2 dark:bg-slate-500 dark:border-slate-800 dark:text-white rounded-2xl w-2/3"
         />
-        {isErrorCreating && errorCreating instanceof Error && <p>{errorCreating.message}</p>}
+        {isErrorCreating && errorCreating instanceof Error && (
+          <p>{errorCreating.message}</p>
+        )}
         <Button>Add</Button>
         {isReordering && (
-          <Button type="warning" onClick={handleDone} extraclasses="animate-shake">
+          <Button
+            type="warning"
+            onClick={handleDone}
+            extraClasses="animate-shake"
+          >
             Done
           </Button>
         )}

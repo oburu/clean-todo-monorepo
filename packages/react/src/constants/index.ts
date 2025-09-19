@@ -1,4 +1,4 @@
-export const BE_URL = 'http://localhost:3000/api/v1/todo';
+export const BE_URL = "http://localhost:3000/api/v1/todo";
 
 export type Todo = {
   id: string;
