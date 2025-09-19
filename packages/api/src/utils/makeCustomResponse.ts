@@ -4,6 +4,10 @@ type CustomResponse = {
   content?: object | null;
 };
 
-export function makeCustomResponse({ status, error = null, content = null }: CustomResponse) {
+export function makeCustomResponse({
+  status,
+  error = null,
+  content = null,
+}: CustomResponse) {
   return { status, error, content };
 }

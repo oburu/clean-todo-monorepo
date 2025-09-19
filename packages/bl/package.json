@@ -1,5 +1,5 @@
 {
-  "name": "@clean-todo/business",
+  "name": "@clean-todo/bl",
   "version": "1.0.0",
   "description": "all the business logic related to the todos",
   "main": "src/index.ts",

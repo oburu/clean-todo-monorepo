@@ -1,7 +1,9 @@
-import { Request, Response, NextFunction } from 'express';
-import { makeCustomResponse } from './makeCustomResponse';
+import { NextFunction, Request, Response } from "express";
+import { makeCustomResponse } from "./makeCustomResponse";
 
-export function makeExpressCallBack(controller: (req: Request) => Promise<object>) {
+export function makeExpressCallBack(
+  controller: (req: Request) => Promise<object>
+) {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
       const content = await controller(req);

@@ -13,5 +13,6 @@
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true,
     "noImplicitThis": true
-  }
+  },
+  "references": [{ "path": "../bl" }]
 }

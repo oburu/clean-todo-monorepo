@@ -1,5 +1,5 @@
-import { ICrudTodoApiBoundary } from '@clean-todo/business';
-import type { Todo } from '@clean-todo/business';
+import type { Todo } from "@clean-todo/bl";
+import { ICrudTodoApiBoundary } from "@clean-todo/bl";
 
 export function inMemoryCrudApi(): ICrudTodoApiBoundary {
   const todos: Todo[] = [];
@@ -12,7 +12,7 @@ export function inMemoryCrudApi(): ICrudTodoApiBoundary {
     async updateTodo(newTodo: Todo) {
       const foundIndex = todos.findIndex((todo) => todo.id === newTodo.id);
 
-      if (foundIndex < 0) throw new Error('Todo does not exist');
+      if (foundIndex < 0) throw new Error("Todo does not exist");
 
       todos[foundIndex] = newTodo;
 
@@ -21,7 +21,7 @@ export function inMemoryCrudApi(): ICrudTodoApiBoundary {
     async deleteTodo(id) {
       const foundIndex = todos.findIndex((todo) => todo.id === id);
 
-      if (foundIndex < 0) throw new Error('Todo does not exist');
+      if (foundIndex < 0) throw new Error("Todo does not exist");
 
       todos.splice(foundIndex, 1);
     },

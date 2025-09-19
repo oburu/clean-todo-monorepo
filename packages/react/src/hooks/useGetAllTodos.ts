@@ -1,5 +1,5 @@
-import { useQuery } from '@tanstack/react-query';
-import { BE_URL, TodoResponse } from '../constants';
+import { useQuery } from "@tanstack/react-query";
+import { BE_URL, TodoResponse } from "../constants";
 
 // const controller = new AbortController();
 // const signal = controller.signal;
@@ -18,7 +18,7 @@ export function useGetAllTodos() {
     isError,
     error,
   } = useQuery({
-    queryKey: ['todos'],
+    queryKey: ["todos"],
     queryFn: ({ signal }) => getAllTodos(signal),
   });
   return {

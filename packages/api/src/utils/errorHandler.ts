@@ -1,5 +1,5 @@
-import { NextFunction, Request, Response } from 'express';
-import { makeCustomResponse } from './makeCustomResponse';
+import { NextFunction, Request, Response } from "express";
+import { makeCustomResponse } from "./makeCustomResponse";
 
 type ValidationError = {
   field: string;
@@ -35,14 +35,14 @@ export const errorHandler = (
   next: NextFunction
 ) => {
   // 404 for my own response
-  if (err.message === 'Todo does not exist') {
+  if (err.message === "Todo does not exist") {
     err.status = 404;
   }
 
   const actualError: ResponseError = {
     status: err.status || 500,
-    message: err.msg || err.message || 'No message',
-    reason: err.reason || err.stack || 'Something failed',
+    message: err.msg || err.message || "No message",
+    reason: err.reason || err.stack || "Something failed",
     url: req.originalUrl,
     ip: req.ip,
     validationErrors: err.validationErrors,

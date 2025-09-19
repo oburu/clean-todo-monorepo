@@ -7,5 +7,5 @@ export function shortId(id: string | undefined) {
     return null;
   }
 
-  return id.split('-', 1)[0];
+  return id.split("-", 1)[0];
 }

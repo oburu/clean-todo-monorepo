@@ -10,7 +10,8 @@
     "api": "yarn workspace @clean-todo/api",
     "react": "yarn workspace @clean-todo/react",
     "db": "yarn workspace @clean-todo/db",
-    "business": "yarn workspace @clean-todo/business",
-    "cli": "yarn workspace @clean-todo/cli"
+    "bl": "yarn workspace @clean-todo/bl",
+    "cli": "yarn workspace @clean-todo/cli",
+    "clean:node_modules": "find . -name \"node_modules\" -type d -prune -exec rm -rf '{}' +"
   }
 }

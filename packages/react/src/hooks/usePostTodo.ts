@@ -1,12 +1,12 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { BE_URL, Todo } from '../constants';
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { BE_URL, Todo } from "../constants";
 
-async function postTodo(data: Pick<Todo, 'description'>) {
+async function postTodo(data: Pick<Todo, "description">) {
   try {
     const response = await fetch(BE_URL, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
@@ -31,7 +31,7 @@ export function usePostTodo() {
     mutate: createTodo,
   } = useMutation({
     mutationFn: postTodo,
-    onSuccess: () => queryClient.invalidateQueries(['todos']),
+    onSuccess: () => queryClient.invalidateQueries(["todos"]),
   });
 
   return {

@@ -1,6 +1,11 @@
-import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
-import { TodoItem } from './TodoItem';
-import { Todo } from '../constants';
+import {
+  DragDropContext,
+  Draggable,
+  Droppable,
+  DropResult,
+} from "react-beautiful-dnd";
+import { Todo } from "../constants";
+import { TodoItem } from "./TodoItem";
 
 type ListType = {
   todos: Todo[];
@@ -28,7 +33,9 @@ export function List({ todos, handleReorder, isReordering }: ListType) {
             <div
               {...provided.droppableProps}
               ref={provided.innerRef}
-              className={isReordering && !snapshot.isDraggingOver ? 'animate-shake' : ''}
+              className={
+                isReordering && !snapshot.isDraggingOver ? "animate-shake" : ""
+              }
             >
               {todos?.length &&
                 todos.map((item, index) => (

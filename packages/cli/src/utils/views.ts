@@ -1,29 +1,29 @@
-import chalk from 'chalk';
-import chalkAnimation from 'chalk-animation';
-import inquirer from 'inquirer';
-import { choices } from '../constants';
-import { handleSelectedChoice } from '../handleSelectedChoice';
-import { sleep } from './shared';
+import chalk from "chalk";
+import chalkAnimation from "chalk-animation";
+import inquirer from "inquirer";
+import { choices } from "../constants";
+import { handleSelectedChoice } from "../handleSelectedChoice";
+import { sleep } from "./shared";
 
 export async function welcome() {
-  await createRainBowAnimation('Welcome to the CLI todo list');
+  await createRainBowAnimation("Welcome to the CLI todo list");
   console.log(`
-  ${chalk.bgBlue('HOW TO USE IT')}
-  It's simple, just choose one of the ${chalk.bgMagenta('options')} below
+  ${chalk.bgBlue("HOW TO USE IT")}
+  It's simple, just choose one of the ${chalk.bgMagenta("options")} below
   `);
   await sleep();
 }
 
 export async function goodBye() {
-  await createRainBowAnimation('Thank you, bye bye!! 👋👋');
+  await createRainBowAnimation("Thank you, bye bye!! 👋👋");
   process.exit(0);
 }
 
 export async function displayChoices() {
   const answer = await inquirer.prompt({
-    name: 'choice',
-    type: 'list',
-    message: 'What do you want to do? \n',
+    name: "choice",
+    type: "list",
+    message: "What do you want to do? \n",
     choices: Object.values(choices),
   });
   await handleSelectedChoice(answer.choice);

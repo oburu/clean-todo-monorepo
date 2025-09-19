@@ -1,18 +1,24 @@
-import { ICrudTodoApiBoundary } from '../boundaries/ICrudTodoApiBoundary';
+import { ICrudTodoApiBoundary } from "../boundaries/ICrudTodoApiBoundary";
 import {
   makeCreateTodo,
-  makeGetAllTodos,
-  makeUpdateTodo,
-  makeDeleteTodo,
   makeDeleteAllTodos,
+  makeDeleteTodo,
+  makeGetAllTodos,
   makeUpdateAllTodos,
-} from '../useCases';
+  makeUpdateTodo,
+} from "../useCases";
 
 export type CrudApiType = () => ICrudTodoApiBoundary;
 
 export function makeTodoCrudApi(crudApiType: CrudApiType) {
-  const { createTodo, deleteTodo, updateTodo, getAllTodos, deleteAllTodos, updateAllTodos } =
-    crudApiType();
+  const {
+    createTodo,
+    deleteTodo,
+    updateTodo,
+    getAllTodos,
+    deleteAllTodos,
+    updateAllTodos,
+  } = crudApiType();
 
   return {
     createTodo: makeCreateTodo({ createTodo }),

@@ -1,21 +1,21 @@
-import { Todo, makeTodo } from '../Todo';
+import { Todo, makeTodo } from "../Todo";
 
 function mockedMakeId() {
-  return 'uuid-123456';
+  return "uuid-123456";
 }
 
 const nowDate = Date.now();
 
 const mockedTodo: Todo = {
   id: mockedMakeId(),
-  description: 'hola',
+  description: "hola",
   createdOn: nowDate,
   modifiedOn: nowDate,
   done: false,
 };
 
-describe('Testing the Todo entity', () => {
-  it('should create a Todo', () => {
+describe("Testing the Todo entity", () => {
+  it("should create a Todo", () => {
     const res = makeTodo(mockedMakeId).please(mockedTodo);
 
     expect(res).toEqual(mockedTodo);
