@@ -12,7 +12,7 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "mongoose": "^7.1.0",
-    "@clean-todo/business": "1.0.0"
+    "@clean-todo/bl": "1.0.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.1",

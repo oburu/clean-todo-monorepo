@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import path from 'path';
-import { ICrudTodoApiBoundary } from '@clean-todo/business';
-import type { Todo } from '@clean-todo/business';
+import { ICrudTodoApiBoundary } from '@clean-todo/bl';
+import type { Todo } from '@clean-todo/bl';
 
 function createSchema() {
   const TodoSchema = new mongoose.Schema({
@@ -17,12 +17,12 @@ function createSchema() {
 }
 
 function connectToMongoDB() {
-  dotenv.config({ path: path.resolve(__dirname, '../../.env') });
-  const { DB_CONNECT } = process.env;
+  dotenv.config({ path: path.resolve(__dirname, '../../.env.local') });
+  const { MONGODB_URI } = process.env;
 
-  DB_CONNECT &&
+  MONGODB_URI &&
     mongoose
-      .connect(DB_CONNECT)
+      .connect(MONGODB_URI)
       .then(() => {
         console.log('🥭[mongo]: DB connected');
       })

@@ -1,10 +1,10 @@
 import { Request } from 'express';
-import { makeTodo, makeId, makeTodoCrudApi } from '@clean-todo/business';
+import { makeTodo, makeId, makeTodoCrudApi } from '@clean-todo/bl';
 import { inMemoryCrudApi, inSystemCrudApi, inMongo } from '@clean-todo/db';
 
 // Connect selected Api with domain logic and get usecases
 const { createTodo, getAllTodos, updateTodo, deleteTodo, updateAllTodos } =
-  makeTodoCrudApi(inSystemCrudApi);
+  makeTodoCrudApi(inMongo);
 
 export function addTodoRouteController(req: Request) {
   const todo = makeTodo(makeId).please({ description: req.body.description });

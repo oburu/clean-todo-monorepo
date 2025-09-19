@@ -5,7 +5,7 @@ import {
   updateTodoController,
   deleteTodoRouteController,
 } from '../makeRoutesControllers';
-import { Todo } from '@clean-todo/business/Todo';
+import { Todo } from '@clean-todo/bl';
 
 const mockReq = {
   body: {

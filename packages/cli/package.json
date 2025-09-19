@@ -15,7 +15,7 @@
     "dayjs": "^1.11.7",
     "inquirer": "^8",
     "nanospinner": "^1.1.0",
-    "@clean-todo/business": "1.0.0",
+    "@clean-todo/bl": "1.0.0",
     "@clean-todo/db": "1.0.0"
   },
   "devDependencies": {

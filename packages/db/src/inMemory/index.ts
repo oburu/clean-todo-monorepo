@@ -1,5 +1,5 @@
-import { ICrudTodoApiBoundary } from '@clean-todo/business';
-import type { Todo } from '@clean-todo/business';
+import { ICrudTodoApiBoundary } from '@clean-todo/bl';
+import type { Todo } from '@clean-todo/bl';
 
 export function inMemoryCrudApi(): ICrudTodoApiBoundary {
   const todos: Todo[] = [];

@@ -1,8 +1,8 @@
 import inquirer from 'inquirer';
 import chalk from 'chalk';
 import { createSpinner } from 'nanospinner';
-import { ICrudTodoApiBoundary } from '@clean-todo/business';
-import type { Todo } from '@clean-todo/business';
+import { ICrudTodoApiBoundary } from '@clean-todo/bl';
+import type { Todo } from '@clean-todo/bl';
 import { shortId, sleep } from '../utils/shared';
 
 export async function toggleTodoController({
@@ -14,7 +14,7 @@ export async function toggleTodoController({
   const typedTodo = await inquirer.prompt({
     name: 'id',
     type: 'input',
-    message: `Please, type the index of the todo to toggle${chalk.gray('(enter to go back)')}:`,
+    message: `Please, type the id of the todo to toggle${chalk.gray('(enter to go back)')}:`,
   });
 
   if (typedTodo.id === '') {

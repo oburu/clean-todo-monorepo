@@ -8,7 +8,7 @@ import { errorHandler } from './utils/errorHandler';
 import { routes } from './routes';
 
 function startApp() {
-  dotenv.config({ path: path.resolve(__dirname, '../.env') });
+  dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
 
   const app = express();
   const { PORT, API_PREFIX, API_DOCS_SUFFIX } = process.env;

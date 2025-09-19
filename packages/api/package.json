@@ -15,7 +15,7 @@
     "express": "^4.18.2",
     "swagger-ui-express": "^4.6.2",
     "yamljs": "^0.3.0",
-    "@clean-todo/business": "1.0.0",
+    "@clean-todo/bl": "1.0.0",
     "@clean-todo/db": "1.0.0"
   },
   "devDependencies": {

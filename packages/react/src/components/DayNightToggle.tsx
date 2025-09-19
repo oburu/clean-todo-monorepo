@@ -22,20 +22,28 @@ export function DayNightToggle() {
     darkIconRef.current?.classList.toggle('hidden');
     lightIconRef.current?.classList.toggle('hidden');
 
-    if (!localStorage.getItem('color-theme')) {
-      if (document.documentElement.classList.contains('dark')) {
-        addLight();
-      } else {
-        addDark();
-      }
-      return;
-    }
+    // if (!localStorage.getItem('color-theme')) {
+    //   if (document.documentElement.classList.contains('dark')) {
+    //     addLight();
+    //   } else {
+    //     addDark();
+    //   }
+    //   return;
+    // }
 
-    if (localStorage.getItem('color-theme') === 'light') {
-      addDark();
-    } else {
+    // if (localStorage.getItem('color-theme') === 'light') {
+    //   addDark();
+    // } else {
+    //   addLight();
+    // }
+
+       const isDark = document.documentElement.classList.contains('dark');
+    if (isDark) {
       addLight();
+    } else {
+      addDark();
     }
+    
   }
 
   return (

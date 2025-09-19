@@ -1,5 +1,5 @@
-import { ICrudTodoApiBoundary } from '@clean-todo/business';
-import type { Todo } from '@clean-todo/business';
+import { ICrudTodoApiBoundary } from '@clean-todo/bl';
+import type { Todo } from '@clean-todo/bl';
 import fs from 'fs';
 import path from 'path';
 
